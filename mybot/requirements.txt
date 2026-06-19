@@ -1,0 +1,4 @@
+pyTelegramBotAPI==4.23.0
+llama-cpp-python==0.2.90
+requests==2.32.3
+python-dotenv==1.0.1

@@ -25,6 +25,11 @@ Android 7.0 (API 24) or higher.
 ./gradlew assembleDebug
 ```
 
+## Repository Layout
+
+- `/workspace/app` contains the Android `Scrib` application.
+- `/workspace/mybot` contains a separate server-side Python Telegram AI bot for admin-only coding workflows and generated child bots.
+
 ## License
 
 Licensed under the [Apache License 2.0](LICENSE).
