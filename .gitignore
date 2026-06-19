@@ -22,3 +22,14 @@ Thumbs.db
 # Keystore
 *.jks
 *.keystore
+
+# Python
+__pycache__/
+*.pyc
+.venv/
+venv/
+
+# Bot secrets and local models
+/mybot/.env
+/mybot/generated/
+/mybot/*.gguf
