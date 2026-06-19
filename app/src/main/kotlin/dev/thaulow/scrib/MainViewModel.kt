@@ -212,11 +212,14 @@ class MainViewModel(
   fun flushPendingSave() {
     if (!hasPendingPersistence) return
     val success = runBlocking(Dispatchers.IO) { persist() }
-    hasPendingPersistence = false
-    if (!success) _saveError.tryEmit(Unit)
+    hasPendingPersistence = !success
+    if (!success) {
+      _saveError.tryEmit(Unit)
+    }
   }
 
   private fun setValueAndPush(new: TextFieldValue) {
+    hasLocalChanges = true
     value = new
     pushSnapshotFromValue()
     lastCoalesceAt = 0L
