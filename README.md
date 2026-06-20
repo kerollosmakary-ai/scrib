@@ -25,6 +25,18 @@ Android 7.0 (API 24) or higher.
 ./gradlew assembleDebug
 ```
 
+## Download full APK
+
+To build a full installable APK from GitHub Actions:
+
+1. Open the repository `Actions` tab.
+2. Select the `Manual Release Artifact` workflow.
+3. Click `Run workflow`.
+4. Wait for the job to finish.
+5. Download the `scrib-release-apk` artifact from the run page.
+
+This workflow builds the signed release APK using the repository signing secrets.
+
 ## Repository Layout
 
 - `/workspace/app` contains the Android `Scrib` application.
