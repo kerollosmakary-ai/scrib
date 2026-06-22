@@ -12,6 +12,7 @@ except ImportError:  # pragma: no cover - optional at runtime
 
 ROOT_DIR = Path(__file__).resolve().parent
 GENERATED_DIR = ROOT_DIR / "generated"
+USER_DATA_DIR = ROOT_DIR / "data"
 
 if load_dotenv is not None:
     load_dotenv(ROOT_DIR / ".env")
@@ -46,12 +47,17 @@ class Settings:
     remote_ai_url: str
     remote_ai_token: str
     generated_dir: Path
+    user_data_dir: Path
+    code_edit_root: Path
+    edit_log_path: Path
     expected_dir_name: str
 
 
 def load_settings() -> Settings:
     token = os.getenv("TELEGRAM_BOT_TOKEN", "").strip()
     admin_ids = _parse_admin_ids(os.getenv("ADMIN_IDS", ""))
+    user_data_dir = Path(os.getenv("USER_DATA_DIR", USER_DATA_DIR)).expanduser()
+    code_edit_root = Path(os.getenv("CODE_EDIT_ROOT", ROOT_DIR)).expanduser()
     return Settings(
         telegram_token=token,
         admin_ids=admin_ids,
@@ -63,6 +69,9 @@ def load_settings() -> Settings:
         remote_ai_url=os.getenv("REMOTE_AI_URL", "").strip(),
         remote_ai_token=os.getenv("REMOTE_AI_TOKEN", "").strip(),
         generated_dir=Path(os.getenv("GENERATED_DIR", GENERATED_DIR)).expanduser(),
+        user_data_dir=user_data_dir,
+        code_edit_root=code_edit_root,
+        edit_log_path=Path(os.getenv("EDIT_LOG_PATH", user_data_dir / "edit_audit.log")).expanduser(),
         expected_dir_name=os.getenv("EXPECTED_DIR_NAME", "mybot").strip() or "mybot",
     )
 

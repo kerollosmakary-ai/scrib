@@ -33,3 +33,5 @@ venv/
 /mybot/.env
 /mybot/generated/
 /mybot/*.gguf
+
+/mybot/data/
