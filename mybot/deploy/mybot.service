@@ -1,0 +1,16 @@
+[Unit]
+Description=MyBot Telegram AI bot
+After=network.target
+
+[Service]
+Type=simple
+# Update all three "/home/ubuntu/scrib/mybot" occurrences together if your install path differs.
+User=ubuntu
+WorkingDirectory=/home/ubuntu/scrib/mybot
+Environment="PATH=/home/ubuntu/scrib/mybot/.venv/bin"
+ExecStart=/home/ubuntu/scrib/mybot/.venv/bin/python /home/ubuntu/scrib/mybot/bot.py
+Restart=always
+RestartSec=5
+
+[Install]
+WantedBy=multi-user.target
