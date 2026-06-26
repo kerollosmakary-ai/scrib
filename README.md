@@ -39,8 +39,8 @@ This workflow builds the signed release APK using the repository signing secrets
 
 ## Repository Layout
 
-- `/workspace/app` contains the Android `Scrib` application.
-- `/workspace/mybot` contains a separate server-side Python Telegram AI bot for admin-only coding workflows and generated child bots.
+- `app/` contains the Android `Scrib` application.
+- `mybot/` contains a separate server-side Python Telegram AI bot for admin-only coding workflows and generated child bots.
 
 ## License
 

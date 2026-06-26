@@ -25,6 +25,10 @@ def is_allowed_change(text: str, safety_prefix: str) -> bool:
     return text.strip().startswith(safety_prefix)
 
 
+def is_command(text: str) -> bool:
+    return text.strip().startswith("/")
+
+
 def clean_input(text: str, safety_prefix: str) -> str:
     stripped = text.strip()
     if stripped.startswith(safety_prefix):
