@@ -16,7 +16,7 @@ from prompts import (
     TERMUX_PROMPT,
     WRITE_CODE_PROMPT,
 )
-from safety import TaskLock, clean_input, is_admin, is_allowed_change, task_lock_message
+from safety import TaskLock, clean_input, is_admin, is_allowed_change, is_command, task_lock_message
 from storage import write_generated_bot
 
 
@@ -110,7 +110,7 @@ def cmd_status(message: telebot.types.Message) -> None:
 
 @bot.message_handler(commands=["lock", "unlock"])
 def cmd_lock(message: telebot.types.Message) -> None:
-    if not guard_admin(message):
+    if not guard_admin(message) or not guard_lock(message):
         return
     if message.text.strip() == "/unlock":
         task_lock.unlock()
@@ -184,7 +184,7 @@ def cmd_create_bot(message: telebot.types.Message) -> None:
     bot.reply_to(message, f"Saved child bot to: {saved_path}")
 
 
-@bot.message_handler(content_types=["text"])
+@bot.message_handler(content_types=["text"], func=lambda m: bool(m.text) and not is_command(m.text))
 def chat_all(message: telebot.types.Message) -> None:
     if not guard_admin(message) or not guard_lock(message):
         return

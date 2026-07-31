@@ -78,3 +78,5 @@ def validate_settings(settings: Settings) -> None:
     if missing:
         joined = ", ".join(missing)
         raise RuntimeError(f"Missing required configuration: {joined}")
+    if ROOT_DIR.resolve() not in settings.generated_dir.resolve().parents:
+        raise RuntimeError("GENERATED_DIR must resolve under the mybot workspace.")

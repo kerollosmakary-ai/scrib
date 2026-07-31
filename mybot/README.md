@@ -5,7 +5,7 @@ Server-side Telegram AI control bot for coding help and child-bot generation.
 ## Setup
 
 ```bash
-cd /workspace/mybot
+cd mybot
 python -m venv .venv
 . .venv/bin/activate
 pip install -r requirements.txt
@@ -26,7 +26,7 @@ The bot sends `prompt`, `messages`, `max_tokens`, and `temperature` in JSON.
 ## Run
 
 ```bash
-cd /workspace/mybot && pwd
+cd mybot && pwd
 python bot.py
 ```
 
@@ -37,4 +37,4 @@ The startup guard must print a path ending in `/mybot`.
 - Only admin IDs can use the bot.
 - `/lock` blocks all commands except `/unlock`.
 - Any disk write requires the `1 ` prefix.
-- Child bots are written only to `/workspace/mybot/generated`.
+- Child bots are written only to `generated/` under the `mybot` workspace.
